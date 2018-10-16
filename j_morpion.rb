@@ -3,7 +3,7 @@ require 'awesome_print'
 class Board
 #  attr_accessor :board, :case_1, :case_2, :case_3, :case_4, :case_5, :case_6, :case_7, :case_9
   def initialize
-    @case_1 = BoardCase.new(1)
+    @case_1 = BoardCase.new(1)#chaque case est un objet de type boardcase
     @case_2 = BoardCase.new(2)
     @case_3 = BoardCase.new(3)
     @case_4 = BoardCase.new(4)
@@ -32,13 +32,10 @@ end
 
 class BoardCase
   attr_accessor :value
-  def initialize(map)
-    @value = ".".blue
-    @map = map
+  def initialize
+    @value = ".".blue 
   end
-  def ass_value
-    return @map
-  end
+  
   def case_value
     return @value
   end
