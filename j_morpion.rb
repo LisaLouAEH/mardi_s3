@@ -105,7 +105,7 @@ class Game
   end
 
   def conditions(stock, input, player)
-    if stock[input].case_value == "." .red
+    if (input > 0 && input < 10) && stock[input].case_value == "." .red
       stock[input].change_value(player.player_symb)
       puts ""
       @board.print_board
