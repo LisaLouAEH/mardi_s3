@@ -69,19 +69,24 @@ class Game
     def round
       @count = 0
       while @count < 8
-        puts "saisir chiffre"
-        input_p1 = gets.to_i
-        @board = @gboard.plateau[input_p1].change_initi(player_1.sign)
-        @gboard.print_board
-        puts "ceci est un #{@board}"
-        @count += 1 #pour compter les tours
-
-        puts "saisir chiffre"
-        input_p2 = gets.to_i
-        @board = @gboard.plateau[input_p2].change_initi(player_2.sign)
-        @gboard.print_board
-        puts "ceci est un #{@board}"
-        @count += 1 #pour compter les tours
+        if je sais pas... == "."
+          puts "saisir chiffre"
+          input_p1 = gets.to_i
+          @board = @gboard.plateau[input_p1].change_initi(player_1.sign)
+          @gboard.print_board
+          puts "ceci est un #{@board}"
+          @count += 1 #pour compter les tours
+        
+          puts "saisir chiffre"
+          input_p2 = gets.to_i
+          @board = @gboard.plateau[input_p2].change_initi(player_2.sign)
+          @gboard.print_board
+          puts "ceci est un #{@board}"
+          @count += 1 #pour compter les tours
+        else
+          puts "Les toilettes sont occupées"
+          print "JPP..."
+        end
       end
       
     end
