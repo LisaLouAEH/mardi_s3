@@ -45,11 +45,7 @@ end
 class BoardCase
   attr_accessor :value
   def initialize
-<<<<<<< HEAD
-    @value = ".".blue 
-=======
     @value = ".".blue
->>>>>>> 54c6930ddd831f88be9c58a44bef1202c9c95e7f
   end
   
   def case_value
