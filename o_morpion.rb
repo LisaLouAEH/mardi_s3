@@ -87,14 +87,18 @@ class Game
         input_p1 = gets.chomp.to_i
         test = conditions(stock, input_p1, @player_1)
       end
+      stop = win_or_loose(stock, @player_1)
 
-      test = 0
-      while (test == 0)
-        puts "#{@player_2.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)"
-        input_p2 = gets.chomp.to_i
-        test = conditions(stock, input_p2, @player_2)
+      if stop == 0
+        test = 0
+        while (test == 0)
+          puts "#{@player_2.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)"
+          input_p2 = gets.chomp.to_i
+          test = conditions(stock, input_p2, @player_2)
+        end
+        stop = win_or_loose(stock, @player_2)
       end
-      end
+    end
   end
 
   def conditions(stock, input, player)
@@ -105,6 +109,27 @@ class Game
       return 1
     else
       puts "don't cheat"
+      return 0
+    end
+  end
+
+  def win_or_loose(stock, player)
+    if (((stock[1].case_value == player.player_symb) && (stock[2].case_value == player.player_symb) && (stock[3].case_value == player.player_symb)) ||
+      ((stock[4].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[6].case_value == player.player_symb)) ||
+      ((stock[7].case_value == player.player_symb) && (stock[8].case_value == player.player_symb) && (stock[9].case_value == player.player_symb)) ||
+      ((stock[1].case_value == player.player_symb) && (stock[4].case_value == player.player_symb) && (stock[7].case_value == player.player_symb)) ||
+      ((stock[2].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[8].case_value == player.player_symb)) ||
+      ((stock[3].case_value == player.player_symb) && (stock[6].case_value == player.player_symb) && (stock[9].case_value == player.player_symb)) ||
+      ((stock[1].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[9].case_value == player.player_symb)) ||
+      ((stock[3].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[7].case_value == player.player_symb)))
+      puts "#{player.first_name}. wins"
+      return 1
+    elsif ((stock[1].case_value != ".") && (stock[2].case_value != "." ) && (stock[3].case_value != "." ) &&
+          (stock[4].case_value != "." ) && (stock[5].case_value != "." ) && (stock[6].case_value != "." ) &&
+          (stock[7].case_value != "." ) && (stock[8].case_value != "." ) && (stock[9].case_value != "." ))
+      puts "Match Null"
+      return 1
+    else
       return 0
     end
   end
