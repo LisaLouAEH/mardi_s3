@@ -21,11 +21,11 @@ class Board
   end
 
   def print_board
-    print "#{@case_1.case_value}    #{@case_2.case_value}    #{@case_3.case_value}"
-    puts "     1 - 2 - 3 \n".green
-    print "#{@case_4.case_value}    #{@case_5.case_value}    #{@case_6.case_value}"
-    puts "     4 - 5 - 6 \n".green
-    print "#{@case_7.case_value}    #{@case_8.case_value}    #{@case_9.case_value}"
+    print " #{@case_1.case_value} #{"|".green} #{@case_2.case_value} #{"|".green} #{@case_3.case_value}"
+    puts "     1 - 2 - 3 \n---+---+---".green
+    print " #{@case_4.case_value} #{"|".green} #{@case_5.case_value} #{"|".green} #{@case_6.case_value}"
+    puts "     4 - 5 - 6 \n---+---+---".green
+    print " #{@case_7.case_value} #{"|".green} #{@case_8.case_value} #{"|".green} #{@case_9.case_value}"
     puts "     7 - 8 - 9".green
   end
 end
@@ -135,9 +135,9 @@ class Game
   end
 
   def play_again
-    puts "Would you like to play an other party? (Y = oui, n = non)"
+    puts "Would you like to play an other party? (Y = oui, n = non)" .green
     input = gets.chomp
-    if input == "Y"
+    if input == "Y" || input == "y"
       Game.new
     else
       exit
