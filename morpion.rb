@@ -1,24 +1,33 @@
 class Board
-  attr_accessor :board
+#  attr_accessor :board, :case_1, :case_2, :case_3, :case_4, :case_5, :case_6, :case_7, :case_9
   def initialize
-#line 1(top)
     @case_1 = BoardCase.new
     @case_2 = BoardCase.new
     @case_3 = BoardCase.new
-#line 2(middle)
     @case_4 = BoardCase.new
     @case_5 = BoardCase.new
     @case_6 = BoardCase.new
-#line 3(bottom)
     @case_7 = BoardCase.new
     @case_8 = BoardCase.new
     @case_9 = BoardCase.new
   end
+
+  def print_board
+    puts "#{@case_1.case_value}    #{@case_2.case_value}    #{@case_3.case_value}"
+    puts ""
+    puts "#{@case_4.case_value}    #{@case_5.case_value}    #{@case_6.case_value}"
+    puts ""
+    puts "#{@case_7.case_value}    #{@case_8.case_value}    #{@case_9.case_value}"
+  end
 end
 
 class BoardCase
+#  attr_accessor :board, :case
   def initialize
-    @case = " "
+    @value = "."
+  end
+  def case_value
+    return @value
   end
 end
 
@@ -33,7 +42,6 @@ class Player
 end
 
 class Game
-#At each begining
   def initialize
     puts "Bienvenue dans le jeu du morpion\n\n"
 
@@ -47,10 +55,8 @@ class Game
     puts ""
     puts "#{@player_1.first_name} play first"
     @board = Board.new
+    @board.print_board
   end
-#we have to propose a choice to the player
-#and stock is response somewhere before sending it to "Bordcase"
-  
 end
 
 game = Game.new
