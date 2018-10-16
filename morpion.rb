@@ -24,8 +24,6 @@ class Board
     puts "#{@case_4.case_value}    #{@case_5.case_value}    #{@case_6.case_value}     4 - 5 - 6"
     puts ""
     puts "#{@case_7.case_value}    #{@case_8.case_value}    #{@case_9.case_value}     7 - 8 - 9"
-
-    puts @case_9.ass_value
   end
 end
 
@@ -40,6 +38,9 @@ class BoardCase
   end
   def case_value
     return @value
+  end
+  def change_value(symb)
+    @value = symb
   end
 end
 
@@ -73,15 +74,20 @@ class Game
     puts "#{@player_1.first_name} play first"
     @board = Board.new
     @board.print_board
-    round(@board)
-#lancer round 1
+    round
   end
 
-  def round(board)
-    stock = board.array_value
-    puts stock
+  def round
+    stock = @board.array_value
     puts "#{@player_1.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)"
     input_p1 = gets.chomp.to_i
+    stock[input_p1].change_value(@player_1.player_symb)
+    @board.print_board
+
+    puts "#{@player_2.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)"
+    input_p2 = gets.chomp.to_i
+    stock[input_p2].change_value(@player_2.player_symb)
+    @board.print_board
   end
 end
 
