@@ -10,53 +10,38 @@ class Board
       @c7 = Board_case.new 
       @c8 = Board_case.new 
       @c9 = Board_case.new 
-      @plateau = ["0", @c1, @c2, @c3, @c4, @c5, @c6, @c7, @c8, @c9]
+      @plateau = ["0", @c1.initi, @c2.initi, @c3.initi, @c4.initi, @c5.initi, @c6.initi, @c7.initi, @c8.initi, @c9.initi]
       
     end
     def print_board
         puts "#{@c1.initi}    #{@c2.initi}    #{@c3.initi}"
-        puts
         puts "#{@c4.initi}    #{@c5.initi}    #{@c6.initi}"
-        puts
         puts "#{@c7.initi}    #{@c8.initi}    #{@c9.initi}"
         
       end
   end
 
   class Board_case
-    attr_accessor :init_value, :count
+    attr_accessor :init_value 
     def initialize
       @init_value = "."
-      @count = 0
-    end
-    def change_initi(i)
-      
-      @init_value = i
     end
     def initi
       return @init_value
     end
-
   end
 
   class Player
-    attr_accessor :name,  :sign
-    def initialize(n, s)
-        @name = n
-        @sign = s
-    end
-    def name
-      return @name
-    end
-    def sign
-      return @sign
+    attr_accessor
+    def initialize(name, signe)
+        @name = name
+        @signe = signe
     end
 
 end
 
 class Game
     attr_accessor :player_1, :player_2, :gboard
-
     def initialize
         puts "nom joueur 1 :"
         @player_1 = Player.new(gets.chomp, "X")
@@ -64,31 +49,14 @@ class Game
         @player_2 = Player.new(gets.chomp, "O")
         @gboard = Board.new
         puts @gboard.print_board#ok
-        round
     end
     def round
-      @count = 0
-      while @count < 8
-        puts "saisir chiffre"
-        input_p1 = gets.to_i
-        @board = @gboard.plateau[input_p1].change_initi(player_1.sign)
-        @gboard.print_board
-        puts "ceci est un #{@board}"
-        @count += 1 #pour compter les tours
-
-        puts "saisir chiffre"
-        input_p2 = gets.to_i
-        @board = @gboard.plateau[input_p2].change_initi(player_2.sign)
-        @gboard.print_board
-        puts "ceci est un #{@board}"
-        @count += 1 #pour compter les tours
-      end
-      
+        
+        
     end
 end
 
-plate = Board.new
-plate.print_board#ok
-
+#plateau = Board.new
+#plateau.print_board
 game = Game.new
-puts game.player_1.sign#    X
+game

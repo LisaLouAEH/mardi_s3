@@ -3,17 +3,6 @@ require 'awesome_print'
 class Board
 #  attr_accessor :board, :case_1, :case_2, :case_3, :case_4, :case_5, :case_6, :case_7, :case_9
   def initialize
-<<<<<<< HEAD
-    @case_1 = BoardCase.new(1)#chaque case est un objet de type boardcase
-    @case_2 = BoardCase.new(2)
-    @case_3 = BoardCase.new(3)
-    @case_4 = BoardCase.new(4)
-    @case_5 = BoardCase.new(5)
-    @case_6 = BoardCase.new(6)
-    @case_7 = BoardCase.new(7)
-    @case_8 = BoardCase.new(8)
-    @case_9 = BoardCase.new(9)
-=======
     @case_1 = BoardCase.new
     @case_2 = BoardCase.new
     @case_3 = BoardCase.new
@@ -23,7 +12,6 @@ class Board
     @case_7 = BoardCase.new
     @case_8 = BoardCase.new
     @case_9 = BoardCase.new
->>>>>>> 54c6930ddd831f88be9c58a44bef1202c9c95e7f
 
     @case_array = [0, @case_1, @case_2, @case_3, @case_4, @case_5, @case_6, @case_7, @case_8, @case_9]
   end
