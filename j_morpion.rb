@@ -3,6 +3,7 @@ require 'awesome_print'
 class Board
 #  attr_accessor :board, :case_1, :case_2, :case_3, :case_4, :case_5, :case_6, :case_7, :case_9
   def initialize
+<<<<<<< HEAD
     @case_1 = BoardCase.new(1)#chaque case est un objet de type boardcase
     @case_2 = BoardCase.new(2)
     @case_3 = BoardCase.new(3)
@@ -12,6 +13,17 @@ class Board
     @case_7 = BoardCase.new(7)
     @case_8 = BoardCase.new(8)
     @case_9 = BoardCase.new(9)
+=======
+    @case_1 = BoardCase.new
+    @case_2 = BoardCase.new
+    @case_3 = BoardCase.new
+    @case_4 = BoardCase.new
+    @case_5 = BoardCase.new
+    @case_6 = BoardCase.new
+    @case_7 = BoardCase.new
+    @case_8 = BoardCase.new
+    @case_9 = BoardCase.new
+>>>>>>> 54c6930ddd831f88be9c58a44bef1202c9c95e7f
 
     @case_array = [0, @case_1, @case_2, @case_3, @case_4, @case_5, @case_6, @case_7, @case_8, @case_9]
   end
@@ -21,11 +33,11 @@ class Board
   end
 
   def print_board
-    print "#{@case_1.case_value}    #{@case_2.case_value}    #{@case_3.case_value}"
-    puts "     1 - 2 - 3 \n".green
-    print "#{@case_4.case_value}    #{@case_5.case_value}    #{@case_6.case_value}"
-    puts "     4 - 5 - 6 \n".green
-    print "#{@case_7.case_value}    #{@case_8.case_value}    #{@case_9.case_value}"
+    print " #{@case_1.case_value} #{"|".green} #{@case_2.case_value} #{"|".green} #{@case_3.case_value}"
+    puts "     1 - 2 - 3 \n---+---+---".green
+    print " #{@case_4.case_value} #{"|".green} #{@case_5.case_value} #{"|".green} #{@case_6.case_value}"
+    puts "     4 - 5 - 6 \n---+---+---".green
+    print " #{@case_7.case_value} #{"|".green} #{@case_8.case_value} #{"|".green} #{@case_9.case_value}"
     puts "     7 - 8 - 9".green
   end
 end
@@ -33,7 +45,11 @@ end
 class BoardCase
   attr_accessor :value
   def initialize
+<<<<<<< HEAD
     @value = ".".blue 
+=======
+    @value = ".".blue
+>>>>>>> 54c6930ddd831f88be9c58a44bef1202c9c95e7f
   end
   
   def case_value
@@ -99,6 +115,7 @@ class Game
         stop = win_or_loose(stock, @player_2)
       end
     end
+    play_again
   end
 
   def conditions(stock, input, player)
@@ -133,7 +150,16 @@ class Game
       return 0
     end
   end
+
+  def play_again
+    puts "Would you like to play an other party? (Y = oui, n = non)" .green
+    input = gets.chomp
+    if input == "Y" || input == "y"
+      Game.new
+    else
+      exit
+    end
+  end
 end
 
-game = Game.new
-#game.print_players_name
+Game.new
