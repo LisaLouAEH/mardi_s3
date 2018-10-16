@@ -33,7 +33,7 @@ end
 class BoardCase
   attr_accessor :value
   def initialize(map)
-    @value = ".".red
+    @value = ".".blue
     @map = map
   end
   def ass_value
@@ -67,14 +67,14 @@ class Game
     puts "Bienvenue dans le jeu du morpion\n\n" .green
 
     print "Player_1, entrez votre prénom > " .cyan
-    player_1 = gets.chomp
+    player_1 = gets.chomp.cyan
     @player_1 = Player.new(player_1, "O".cyan)
-    print "Player_2, entrez votre prénom > " .purple
-    player_2 = gets.chomp
-    @player_2 = Player.new(player_2, "X" .purple)
-    puts "\n#{@player_1.first_name} (#{@player_1.player_symb}) VS #{@player_2.first_name} (#{@player_2.player_symb})" .green
+    print "Player_2, entrez votre prénom > " .yellow
+    player_2 = gets.chomp.yellow
+    @player_2 = Player.new(player_2, "X" .yellow)
+    puts "\n#{@player_1.first_name.cyan} (#{@player_1.player_symb}) #{"VS".red} #{@player_2.first_name.yellow} (#{@player_2.player_symb})"
     puts ""
-    puts "#{@player_1.first_name} play first" .cyan
+    puts "#{@player_1.first_name} #{"play first".cyan}"
     @board = Board.new
     @board.print_board
     round
@@ -86,7 +86,7 @@ class Game
     while (stop == 0)
       test = 0
       while (test == 0)
-        puts "#{@player_1.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)" .cyan
+        puts "#{@player_1.first_name}#{" ou voulez vous jouer? (saisir un chiffre entre 1 et 9)" .cyan}"
         input_p1 = gets.chomp.to_i
         test = conditions(stock, input_p1, @player_1)
       end
@@ -95,7 +95,7 @@ class Game
       if stop == 0
         test = 0
         while (test == 0)
-          puts "#{@player_2.first_name} ou voulez vous jouer? (saisir un chiffre entre 1 et 9)" .purple
+          puts "#{@player_2.first_name} #{" ou voulez vous jouer? (saisir un chiffre entre 1 et 9)".yellow} "
           input_p2 = gets.chomp.to_i
           test = conditions(stock, input_p2, @player_2)
         end
@@ -105,7 +105,7 @@ class Game
   end
 
   def conditions(stock, input, player)
-    if (input > 0 && input < 10) && stock[input].case_value == "." .red
+    if (input > 0 && input < 10) && stock[input].case_value == "." .blue
       stock[input].change_value(player.player_symb)
       puts ""
       @board.print_board
@@ -125,11 +125,11 @@ class Game
       ((stock[3].case_value == player.player_symb) && (stock[6].case_value == player.player_symb) && (stock[9].case_value == player.player_symb)) ||
       ((stock[1].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[9].case_value == player.player_symb)) ||
       ((stock[3].case_value == player.player_symb) && (stock[5].case_value == player.player_symb) && (stock[7].case_value == player.player_symb)))
-      puts "#{player.first_name} wins".red
+      puts "#{player.first_name} #{"wins".red} "
       return 1
-    elsif ((stock[1].case_value != ".".red) && (stock[2].case_value != ".".red ) && (stock[3].case_value != ".".red ) &&
-          (stock[4].case_value != ".".red ) && (stock[5].case_value != ".".red ) && (stock[6].case_value != ".".red ) &&
-          (stock[7].case_value != ".".red ) && (stock[8].case_value != ".".red ) && (stock[9].case_value != ".".red ))
+    elsif ((stock[1].case_value != ".".blue) && (stock[2].case_value != ".".blue ) && (stock[3].case_value != ".".blue ) &&
+          (stock[4].case_value != ".".blue ) && (stock[5].case_value != ".".blue ) && (stock[6].case_value != ".".blue ) &&
+          (stock[7].case_value != ".".blue ) && (stock[8].case_value != ".".blue ) && (stock[9].case_value != ".".blue ))
       puts "Match Null".red
       return 1
     else
